@@ -1,14 +1,15 @@
 import {useHttp} from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {setState} from "react";
+import {useCallback} from "react";
+import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
-import { heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
+import { heroesFetching, heroesFetched, heroesFetchingError, heroDeleted  } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus} = useSelector(state => state);
+    const {filteredHeroes, heroesLoadingStatus} = useSelector(state => state);
     const dispatch = useDispatch();
     const {request} = useHttp();
 
@@ -20,6 +21,14 @@ const HeroesList = () => {
 
         // eslint-disable-next-line
     }, []);
+
+    const onDelete = useCallback((id) => {
+        request(`http://localhost:3001/heroes/${id}`, "DELETE")
+            .then(data => console.log(data, 'Deleted'))
+            .then(dispatch(heroDeleted(id)))
+            .catch(err => console.log(err));
+        // eslint-disable-next-line  
+    }, [request]);
 
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
@@ -33,7 +42,14 @@ const HeroesList = () => {
         }
 
         return arr.map(({id, ...props}) => {
-            return <HeroesListItem key={id} {...props}/>
+            return (
+                <CSSTransition 
+                    key={id}
+                    timeout={500}
+                    classNames="hero">
+                    <HeroesListItem  {...props} onDelete={() => onDelete(id)}/>
+                </CSSTransition>
+            )
         })
     }
 
@@ -42,13 +58,6 @@ const HeroesList = () => {
     // Усложненная задача:
     // Удаление идет и с json файла при помощи метода DELETE
 
-    const deleteItems = (id) => {
-        const updatedHeroes = heroes.filter(hero =>
-            hero.id !== id
-        )
-        setState({heroes: updatedHeroes});
-    }
-
     const deleteItemsJSON = (id) => { // json method DELETE
         dispatch(heroesFetching());
         request(`http://localhost:3001/heroes${id}`)
@@ -56,11 +65,11 @@ const HeroesList = () => {
             .catch(() => dispatch(heroesFetchingError()))
     }
 
-    const elements = renderHeroesList(heroes);
+    const elements = renderHeroesList(filteredHeroes);
     return (
-        <ul>
+        <TransitionGroup component="ul">
             {elements}
-        </ul>
+        </TransitionGroup>
     )
 }
 
