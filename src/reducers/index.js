@@ -2,6 +2,7 @@ const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
     filters: [],
+    activeFilter: 'all',
     filteredHeroes: []
 }
 
