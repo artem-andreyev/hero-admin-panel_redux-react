@@ -38,7 +38,13 @@ const HeroesList = () => {
 
     const renderHeroesList = (arr) => {
         if (arr.length === 0) {
-            return <h5 className="text-center mt-5">Героев пока нет</h5>
+            return (
+                <CSSTransition
+                    timeout={0}
+                    classNames="hero">
+                    <h5 className="text-center mt-5">No heroes yet</h5>
+                </CSSTransition>
+            )
         }
 
         return arr.map(({id, ...props}) => {
@@ -51,18 +57,6 @@ const HeroesList = () => {
                 </CSSTransition>
             )
         })
-    }
-
-    // Задача для этого компонента:
-    // При клике на "крестик" идет удаление персонажа из общего состояния
-    // Усложненная задача:
-    // Удаление идет и с json файла при помощи метода DELETE
-
-    const deleteItemsJSON = (id) => { // json method DELETE
-        dispatch(heroesFetching());
-        request(`http://localhost:3001/heroes${id}`)
-            .then(data => dispatch(heroesFetched(data)))
-            .catch(() => dispatch(heroesFetchingError()))
     }
 
     const elements = renderHeroesList(filteredHeroes);

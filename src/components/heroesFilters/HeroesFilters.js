@@ -10,13 +10,13 @@ const HeroesFilters = () => {
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
-                <p className="card-text">Отфильтруйте героев по элементам</p>
+                <p className="card-text">Filter the characters by element</p>
                 <div className="btn-group">
-                    <button className="btn btn-outline-dark active">Все</button>
-                    <button className="btn btn-danger">Огонь</button>
-                    <button className="btn btn-primary">Вода</button>
-                    <button className="btn btn-success">Ветер</button>
-                    <button className="btn btn-secondary">Земля</button>
+                    <button className="btn btn-outline-dark active">All</button>
+                    <button className="btn btn-danger">Fire</button>
+                    <button className="btn btn-primary">Water</button>
+                    <button className="btn btn-success">Wind</button>
+                    <button className="btn btn-secondary">Earth</button>
                 </div>
             </div>
         </div>
