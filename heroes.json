@@ -1,49 +1,49 @@
 {
-    "heroes": [
-      {
-        "id": 1,
-        "name": "First hero",
-        "description": "The first hero in the rankings!",
-        "element": "fire"
-      },
-      {
-        "id": 2,
-        "name": "Unknow hero",
-        "description": "Hiding in the shadows",
-        "element": "wind"
-      },
-      {
-        "id": 3,
-        "name": "Sea hero",
-        "description": "Like Aquaman, but not from DC",
-        "element": "water"
-      }
-    ],
-    "filters": [
-      {
-        "name": "all",
-        "label": "All",
-        "className": "btn-outline-dark"
-      },
-      {
-        "name": "fire",
-        "label": "Fire",
-        "className": "btn-danger"
-      },
-      {
-        "name": "water",
-        "label": "Water",
-        "className": "btn-primary"
-      },
-      {
-        "name": "wind",
-        "label": "Wind",
-        "className": "btn-success"
-      },
-      {
-        "name": "earth",
-        "label": "Earth",
-        "className": "btn-secondary"
-      }
-    ]
-  }
+  "heroes": [
+    {
+      "id": 1,
+      "name": "First hero",
+      "description": "The first hero in the rankings!",
+      "element": "fire"
+    },
+    {
+      "id": 2,
+      "name": "Unknow hero",
+      "description": "Hiding in the shadows",
+      "element": "wind"
+    },
+    {
+      "id": "a766d3aa-1b7b-4210-8bbd-4d6b0cc6edf4",
+      "name": "Sea hero",
+      "description": "Like Aquaman, but not from DC",
+      "element": "water"
+    }
+  ],
+  "filters": [
+    {
+      "name": "all",
+      "label": "All",
+      "className": "btn-outline-dark"
+    },
+    {
+      "name": "fire",
+      "label": "Fire",
+      "className": "btn-danger"
+    },
+    {
+      "name": "water",
+      "label": "Water",
+      "className": "btn-primary"
+    },
+    {
+      "name": "wind",
+      "label": "Wind",
+      "className": "btn-success"
+    },
+    {
+      "name": "earth",
+      "label": "Earth",
+      "className": "btn-secondary"
+    }
+  ]
+}

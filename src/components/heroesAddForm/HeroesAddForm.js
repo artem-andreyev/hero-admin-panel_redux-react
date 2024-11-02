@@ -25,7 +25,7 @@ const HeroesAddForm = () => {
         }
 
         request("http://localhost:3001/heroes", "POST", JSON.stringify(newHero))
-            .then(res => console.log(res, 'Отправка успешна'))
+            .then(res => console.log(res, 'Sending successful'))
             .then(dispatch(heroCreated(newHero)))
             .catch(err => console.log(err));
 

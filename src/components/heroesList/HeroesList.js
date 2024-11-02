@@ -8,6 +8,8 @@ import { heroesFetching, heroesFetched, heroesFetchingError, heroDeleted  } from
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
+import './heroesList.scss';
+
 const HeroesList = () => {
     const {filteredHeroes, heroesLoadingStatus} = useSelector(state => state);
     const dispatch = useDispatch();
