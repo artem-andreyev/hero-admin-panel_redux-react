@@ -11,18 +11,18 @@ const heroesSlice = createSlice({
     reducers: {
         heroesFetching: state => {state.heroesLoadingStatus = 'loading'},
         heroesFetched: (state, action) => {
-                state.heroesLoadingStatus = 'idle';
-                state.heroes = action.payload;
+            state.heroesLoadingStatus = 'idle';
+            state.heroes = action.payload;
         },
         heroesFetchingError: state => {
-                        state.heroesLoadingStatus = 'error';
-                },
+            state.heroesLoadingStatus = 'error';
+        },
         heroCreated: (state, action) => {
-                        state.heroes.push(action.payload);
-                },
+            state.heroes.push(action.payload);
+        },
         heroDeleted: (state, action) => {
-                        state.heroes = state.heroes.filter(item => item.id !== action.payload);
-                }
+            state.heroes = state.heroes.filter(item => item.id !== action.payload);
+        }
     }
 });
 

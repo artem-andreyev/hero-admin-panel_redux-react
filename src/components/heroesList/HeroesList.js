@@ -1,7 +1,6 @@
 import {useHttp} from '../../hooks/http.hook';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useCallback} from "react";
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 import { createSelector } from 'reselect';
 
@@ -19,22 +18,13 @@ const HeroesList = () => {
         (state) => state.filters.activeFilter,
         (state) => state.heroes.heroes,
         (filter, heroes) => {
-            if (filter === "all") {
-                console.log("render");
+            if (filter === 'all') {
                 return heroes;
             } else {
-                return heroes.filter(item => item.element === filter)
+                return heroes.filter(item => item.element === filter);
             }
         }
     );
-
-    // const filteredHeroes = useSelector(state => {
-    //     if (state.filters.activeFilter === "all") {
-    //         return state.heroes.heroes;
-    //     } else {
-    //         return state.heroes.heroes.filter(item => item.element === state.filters.activeFilter)
-    //     }
-    // })
 
     const filteredHeroes = useSelector(filteredHeroesSelector);
     const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
@@ -57,7 +47,7 @@ const HeroesList = () => {
     if (heroesLoadingStatus === "loading") {
         return <Spinner/>;
     } else if (heroesLoadingStatus === "error") {
-        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
+        return <h5 className="text-center mt-5">Loading error</h5>
     }
 
     const renderHeroesList = (arr) => {
