@@ -1,9 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {useHttp} from '../../hooks/http.hook';
 
 const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle'
 }
+
+const fetchHeroes = createAsyncThunk(
+    'heroes/fetchHeroes',
+    () => {
+        const {request} = useHttp();
+        return request("http://localhost:3001/heroes");
+    }
+);
 
 const heroesSlice = createSlice({
     name: 'heroes',
