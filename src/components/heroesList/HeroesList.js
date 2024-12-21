@@ -72,10 +72,10 @@ const HeroesList = () => {
         })
     }
 
-    const elements = renderHeroesList(filteredHeroes);
+    // const elements = renderHeroesList(filteredHeroes);
     return (
         <TransitionGroup component="ul">
-            {elements}
+            {/* {elements} */}
         </TransitionGroup>
     )
 }
