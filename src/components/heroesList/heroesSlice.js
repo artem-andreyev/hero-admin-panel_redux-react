@@ -25,10 +25,10 @@ const heroesSlice = createSlice({
     initialState,
     reducers: {
         heroCreated: (state, action) => {
-            state.heroes.push(action.payload);
+            heroesAdapter.addOne(state, action.payload);
         },
         heroDeleted: (state, action) => {
-            state.heroes = state.heroes.filter(item => item.id !== action.payload);
+            heroesAdapter.removeOne(state, action.payload);
         }
     },
     extraReducers: (builder) => {
@@ -48,6 +48,9 @@ const heroesSlice = createSlice({
 const {actions, reducer} = heroesSlice;
 
 export default reducer;
+
+export const {selectAll} = heroesAdapter.getSelectors(state => state.heroes);
+
 export const {
     heroesFetching,
     heroesFetched,
