@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import { heroDeleted, fetchHeroes, filteredHeroesSelector } from './heroesSlice';
+import { useGetHeroesQuery } from '../../api/apiSlice';
 
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
@@ -11,6 +12,16 @@ import Spinner from '../spinner/Spinner';
 import './heroesList.scss';
 
 const HeroesList = () => {
+
+    const {
+        data: heroes,
+        isFetching,
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    } = useGetHeroesQuery();
+
     const filteredHeroes = useSelector(filteredHeroesSelector);
     const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
     const dispatch = useDispatch();
