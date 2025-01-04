@@ -29,7 +29,7 @@ const HeroesList = () => {
         } else {
             return filteredHeroes.filter(item => item.element === activeFilter);
         }
-    }, [heroes]);
+    }, [heroes, activeFilter]);
 
     // const filteredHeroes = useSelector(filteredHeroesSelector);
     // const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
